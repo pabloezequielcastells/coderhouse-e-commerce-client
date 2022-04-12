@@ -1,0 +1,53 @@
+<div fxLayout="row">
+
+    <div style="overflow-y: auto;" fxFlex="80" fxLayout="column">
+        <div fxLayout="row">
+            <h1> Productos en venta</h1>
+        </div>
+        <br>
+        <div fxLayout="row wrap">
+            <mat-card class="product-card" *ngFor="let product of products">
+                <mat-card-header>
+                    <mat-card-title>{{ product.title }} - {{ product.code }}</mat-card-title>
+                    <mat-card-subtitle>{{ product.price }} - ({{ product.stock }})</mat-card-subtitle>
+                </mat-card-header>
+                <img class="product-card-image" mat-card-image [src]="product.thumbnail ?? 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png'">
+                <mat-card-content>
+                    <div class="product-card-content">
+                        {{ product.description }}
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="addToCart( product )">AGREGAR A CARRITO</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+    <div fxLayout="column">
+
+        <div fxLayout="row">
+            <h1> Carrito </h1>
+            <button *ngIf="cart" mat-mini-fab (click)="deleteCart()"><mat-icon>delete</mat-icon></button>
+        </div>
+        <br>
+
+        <h1 *ngIf="cart?.products?.length == 0 || !cart"> Su carrito se encuentra vacío </h1>
+
+        <div *ngFor="let product of cart?.products">
+            <mat-card style="margin-bottom: 20px;" *ngIf="getProductIndex(product.id) > -1">
+                <mat-card-header>
+                    <mat-card-title>{{ getProductName(product.id) }}</mat-card-title>
+                    <mat-card-subtitle>Cantidad: ({{ product.quantity }})</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-actions>
+                    <button (click)="deleteCartProduct(product.id)" mat-button>ELIMINAR</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+
+    </div>
+
+</div>

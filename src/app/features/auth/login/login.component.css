@@ -1,0 +1,22 @@
+.login-panel-base {
+    height: 80%;
+}
+
+.login-panel {
+    background-color: white;
+    padding: 40px;
+    border: 1px solid #ccc;
+}
+
+.login-register-panel {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.diente {
+    fill-opacity: 0;
+    stroke: darkgray;
+    stroke-width: 0.5px;
+}

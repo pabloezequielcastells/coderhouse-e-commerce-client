@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="details-panel-base">
+    <form (ngSubmit)="save()" [formGroup]="form" fxFlex="0 1 500px">
+        <mat-card fxLayout="column">
+            <mat-card-title>
+                <h1>Producto</h1>
+            </mat-card-title>
+            <mat-form-field>
+                <mat-label>Ingrese el título</mat-label>
+                <input type="text" formControlName="title" matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ingrese la descripción</mat-label>
+                <input type="text" formControlName="description" matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ingrese el código</mat-label>
+                <input type="text" formControlName="code" matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ingrese una imagen (link)</mat-label>
+                <input type="text" formControlName="thumbnail" matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ingrese el precio</mat-label>
+                <input type="number" formControlName="price" matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ingrese el stock</mat-label>
+                <input type="number" formControlName="stock" matInput>
+            </mat-form-field>
+
+            <mat-card-actions>
+                <button type="submit" color="primary" mat-raised-button>Guardar</button>
+                <button type="button" (click)="cancel()" color="warn" mat-button>Cancelar</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

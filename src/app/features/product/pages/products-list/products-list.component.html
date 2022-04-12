@@ -1,0 +1,25 @@
+<div fxLayout="row">
+    <h1> Productos </h1> <button mat-mini-fab *ngIf="isAdmin" [routerLink]="['/product/details']"><mat-icon>add</mat-icon></button> </div>
+<br>
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+
+
+    <mat-card class="product-card" *ngFor="let product of products">
+        <mat-card-header>
+            <mat-card-title>{{ product.title }} - {{ product.code }}</mat-card-title>
+            <mat-card-subtitle>{{ product.price }} - ({{ product.stock }})</mat-card-subtitle>
+        </mat-card-header>
+        <img class="product-card-image" mat-card-image [src]="product.thumbnail ?? 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png'">
+        <mat-card-content>
+            <div class="product-card-content">
+                {{ product.description }}
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button *ngIf="isAdmin" mat-button [routerLink]="['/product/details', product.id]">EDITAR</button>
+            <button *ngIf="isAdmin" (click)="delete(product)" mat-button>ELIMINAR</button>
+        </mat-card-actions>
+    </mat-card>
+
+
+</div>
